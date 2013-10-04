@@ -1,0 +1,2 @@
+class PostCreditsScenesController < ApplicationController
+end
