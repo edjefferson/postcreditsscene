@@ -1,5 +1,5 @@
 class PublicPagesController < ApplicationController
-
+  layout 'admin'
   
   def index
     if params[:q] != nil
