@@ -25,7 +25,7 @@ class PublicPagesController < ApplicationController
     lookup = Movie.where(search: text.downcase).first
     if lookup == nil
       search = Imdb::Search.new(text)
-      search.movies each do |movie|
+      search.movies.each do |movie|
         put movie
       end
       not_movies = ["TV Series","TV Episode", "Video","Video Game", "Short"]
