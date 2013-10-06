@@ -6,6 +6,11 @@ Postcreditsscene::Application.routes.draw do
       post 'import'
     end
   end
+    resources 'real_scenes' do
+    collection do
+      post 'import'
+    end
+  end
   get 'admin' => 'post_credits_scenes#index'
   resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.

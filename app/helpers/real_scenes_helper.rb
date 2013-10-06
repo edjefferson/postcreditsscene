@@ -1,0 +1,2 @@
+module RealScenesHelper
+end

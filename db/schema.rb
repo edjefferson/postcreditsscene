@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006123529) do
+ActiveRecord::Schema.define(version: 20131006160207) do
 
   create_table "movies", force: true do |t|
     t.string   "search"
@@ -22,10 +22,19 @@ ActiveRecord::Schema.define(version: 20131006123529) do
     t.datetime "updated_at"
     t.string   "second_char"
     t.string   "second_cast"
+    t.string   "imdb_id"
   end
 
   create_table "post_credits_scenes", force: true do |t|
     t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "real_scenes", force: true do |t|
+    t.string   "imdb_id"
+    t.string   "title"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
