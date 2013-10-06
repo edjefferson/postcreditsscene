@@ -1,4 +1,13 @@
 Postcreditsscene::Application.routes.draw do
+  root 'public_pages#index'
+  get 'findscene' => 'public_pages#index'
+  resources 'post_credits_scenes' do
+    collection do
+      post 'import'
+    end
+  end
+  get 'admin' => 'post_credits_scenes#index'
+  resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

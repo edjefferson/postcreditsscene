@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$( document ).ready(function() {
+  $('#spinner').fadeOut();
+});
+
+
+$( document ).ajaxStop(function() {
+  $('#spinner').fadeOut();
+  $('#post_credits_scene').delay(500).fadeIn();
+  
+});
+
+$( document ).ajaxStart(function() {
+  $('#post_credits_scene').fadeOut();
+  $('#spinner').delay(500).fadeIn();
+});

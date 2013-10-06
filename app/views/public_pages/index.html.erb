@@ -1,0 +1,11 @@
+<%= form_tag("/findscene", method: "get", class: "form-inline", remote: true) do %>
+    <h4>
+    <%= text_field_tag(:q,'',class: "namebox") %>
+    </h4>
+    <%= button_tag("Check", name:nil, class:"btn-lg btn-primary")  %>
+
+  <% end %>
+  <div id ="post_credits_scene">
+    <%= render @post_credits_scene %>
+  </div>
+  <div id="spinner" class="spinner"></div>

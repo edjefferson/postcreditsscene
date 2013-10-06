@@ -1,0 +1,49 @@
+<h1>Post Credits Scenes</h1>
+<%= form_tag import_post_credits_scenes_path, multipart: true do %>
+<div class="row">
+  <div class="col-md-4">
+
+      <%= file_field_tag :file %>
+
+  </div>
+    <div class="col-md-4">
+<%=  button_tag "Import", class:"btn" %>
+  </div>
+</div>
+    <% end %>
+  <br>
+<div class="row">
+  <div class="col-md-4">
+    <%=  button_to "New Scene", new_post_credits_scene_path, class:"btn", method: :get %>
+      
+
+
+  </div>
+
+  <div class="col-md-4">
+    <%= button_to "Export", '../post_credits_scenes.csv', class: "btn",  method: :get   %><br />
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Scene</th>
+      <th></th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scenes.each do |scene| %>
+      <tr>
+        <td><%= scene.id %></td>
+        <td><%= scene.text %></td>
+        <td><%= link_to 'Edit', edit_post_credits_scene_path(scene) %></td>
+        <td><%= link_to 'Delete', scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
