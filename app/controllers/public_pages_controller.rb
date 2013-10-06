@@ -26,7 +26,7 @@ class PublicPagesController < ApplicationController
     if lookup == nil
       search = Imdb::Search.new(text)
       search.movies.each do |movie|
-        put movie
+        puts movie
       end
       not_movies = ["TV Series","TV Episode", "Video","Video Game", "Short"]
       movie_info = search.movies.select{|movie| not_movies.include?(movie.title.split("(")[-1][0..-2]) == false}[0]
