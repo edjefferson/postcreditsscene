@@ -1,9 +1,9 @@
-<h1>The film's over, but can we home yet?</h1>
+<h1>We left when the credits started - did we miss anything?</h1>
 
 
 <%= form_tag("/findscene", method: "get", class: "form-inline", remote: true) do %>
     <h4>
-    <%= text_field_tag(:q,'',class: "namebox") %>
+    What movie were you watching? <%= text_field_tag(:q,'',class: "namebox") %>
     </h4>
     <%= button_tag("Check if there's a post-credits scene", name:nil, class:"btn-lg btn-primary")  %>
 
@@ -11,4 +11,5 @@
   <div id ="post_credits_scene">
     <%= render @post_credits_scene %>
   </div>
+  <br>
   <div id="spinner" class="spinner"></div>

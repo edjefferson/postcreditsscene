@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+.public {
+
+  background-color: black;
+  color: white;
+}
+

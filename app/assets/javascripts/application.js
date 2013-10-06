@@ -21,12 +21,10 @@ $( document ).ready(function() {
 
 
 $( document ).ajaxStop(function() {
-  $('#spinner').fadeOut();
-  $('#post_credits_scene').delay(500).fadeIn();
+  $('#spinner').fadeOut(function() {$('#post_credits_scene').fadeIn();});
   
 });
 
 $( document ).ajaxStart(function() {
-  $('#post_credits_scene').fadeOut();
-  $('#spinner').delay(500).fadeIn();
+  $('#post_credits_scene').fadeOut(function() {$('#spinner').fadeIn();});
 });
