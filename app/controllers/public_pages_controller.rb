@@ -25,9 +25,6 @@ class PublicPagesController < ApplicationController
     lookup = Movie.where(search: text.downcase).first
     if lookup == nil
       search = Imdb::Search.new(text)
-      search.movies.each do |movie|
-        puts movie
-      end
       not_movies = ["TV Series","TV Episode", "Video","Video Game", "Short"]
       movie_info = search.movies.select{|movie| not_movies.include?(movie.title.split("(")[-1][0..-2]) == false}[0]
       Movie.create(search: text.downcase, title: movie_info.title, main_char: movie_info.cast_characters[0].gsub(" (voice)",""), main_cast: movie_info.cast_members[0], second_char: movie_info.cast_characters[1].gsub(" (voice)",""), second_cast: movie_info.cast_members[1])

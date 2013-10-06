@@ -1,7 +1,7 @@
 class CreatePostCreditsScenes < ActiveRecord::Migration
   def change
     create_table :post_credits_scenes do |t|
-      t.string :text
+      t.text :text, :limit => nil
 
       t.timestamps
     end
