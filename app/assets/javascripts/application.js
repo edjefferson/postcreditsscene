@@ -16,7 +16,7 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  $('#spinner').fadeOut();
+  $('#spinner').hide();
 });
 
 

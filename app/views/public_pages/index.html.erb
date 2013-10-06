@@ -1,8 +1,11 @@
+<h1>The film's over, but can we home yet?</h1>
+
+
 <%= form_tag("/findscene", method: "get", class: "form-inline", remote: true) do %>
     <h4>
     <%= text_field_tag(:q,'',class: "namebox") %>
     </h4>
-    <%= button_tag("Check", name:nil, class:"btn-lg btn-primary")  %>
+    <%= button_tag("Check if there's a post-credits scene", name:nil, class:"btn-lg btn-primary")  %>
 
   <% end %>
   <div id ="post_credits_scene">
