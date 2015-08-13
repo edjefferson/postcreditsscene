@@ -1,6 +1,6 @@
 class PostCreditsScene < ActiveRecord::Base
   def self.to_csv
-    CSV.generate do |csv|
+    CSV.open("egg.csv", w) do |csv|
       csv << column_names[0..1]
       all.each do |item|
         csv << item.attributes.values_at(*column_names[0..1])
