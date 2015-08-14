@@ -10,8 +10,17 @@ class PublicPagesController < ApplicationController
         @post_credits_scene = PostCreditsScene.new(text: real_scene.text)
         @scene_text = @post_credits_scene.text
       else
-        @character = "#{@movie.main_char} (#{@movie.main_cast})"
-        @character_two = "#{@movie.second_char} (#{@movie.second_cast})"
+        if @movie.main_char[0..6] == "Herself" || @movie.main_char[0..6] == "Himself"
+          @character = "#{@movie.main_cast} (#{@movie.main_char})"
+        else
+          @character = "#{@movie.main_char} (#{@movie.main_cast})"
+        end
+        
+        if @movie.second_char[0..6] == "Herself" || @movie.second_char[0..6] == "Himself"
+          @character_two = "#{@movie.second_cast} (#{@movie.second_char})"
+        else
+          @character_two = "#{@movie.second_char} (#{@movie.second_cast})"
+        end
         @post_credits_scene = PostCreditsScene.all.to_a.sample
         @scene_text = @post_credits_scene.text.gsub("CHARACTER_ONE",@character).gsub("CHARACTER_TWO",@character_two)
       end
