@@ -11,40 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006160207) do
+ActiveRecord::Schema.define(version: 20150814105043) do
 
-  create_table "movies", force: true do |t|
-    t.string   "search"
-    t.string   "title"
-    t.string   "main_char"
-    t.string   "main_cast"
+  create_table "movies", force: :cascade do |t|
+    t.string   "search",      limit: 255
+    t.string   "title",       limit: 255
+    t.string   "main_char",   limit: 255
+    t.string   "main_cast",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "second_char"
-    t.string   "second_cast"
-    t.string   "imdb_id"
+    t.string   "second_char", limit: 255
+    t.string   "second_cast", limit: 255
+    t.string   "imdb_id",     limit: 255
+    t.string   "poster"
   end
 
-  create_table "post_credits_scenes", force: true do |t|
-    t.string   "text"
+  create_table "post_credits_scenes", force: :cascade do |t|
+    t.string   "text",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "real_scenes", force: true do |t|
-    t.string   "imdb_id"
-    t.string   "title"
+  create_table "real_scenes", force: :cascade do |t|
+    t.string   "imdb_id",    limit: 255
+    t.string   "title",      limit: 255
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "password_digest"
-    t.string   "remember_token"
+    t.string   "name",            limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "remember_token",  limit: 255
   end
 
 end
