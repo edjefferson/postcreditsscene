@@ -48,8 +48,8 @@ class PublicPagesController < ApplicationController
       movie_info = search.movies.select{|movie| not_movies.include?(movie.title.split("(")[-1][0..-2]) == false}[0]
       Movie.create(search: text.downcase, imdb_id: movie_info.id, title: movie_info.title, main_char: movie_info.cast_characters[0].gsub(" (voice)",""), main_cast: movie_info.cast_members[0], second_char: movie_info.cast_characters[1].gsub(" (voice)",""), second_cast: movie_info.cast_members[1], poster: movie_info.poster)
       agent = Mechanize.new
-      agent.log = Logger.new "mech.log"
-      agent.get(movie_info.poster).save!("public/images/#{@id}.jpg")
+      puts movie_info.poster
+      agent.get(movie_info.poster).save!("public/images/#{movie_info.id}.jpg")
       lookup = Movie.where(search: text.downcase).first
 
     end
