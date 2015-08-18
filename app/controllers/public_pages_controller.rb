@@ -4,6 +4,7 @@ class PublicPagesController < ApplicationController
   def index
     if params[:q] != nil
       @movie = find_movie(params[:q])
+      @id = @movie.imdb_id
       @title = @movie.title
       real_scene = check_for_real_scene?(@movie.imdb_id)
       if real_scene
@@ -23,7 +24,7 @@ class PublicPagesController < ApplicationController
         end
         @post_credits_scene = PostCreditsScene.all.to_a.sample
         @scene_text = @post_credits_scene.text.gsub("CHARACTER_ONE",@character).gsub("CHARACTER_TWO",@character_two)
-        @poster = @movie.poster
+        @poster = "#{@id}.jpg"
       end
     else
       @post_credits_scene = PostCreditsScene.new
@@ -46,7 +47,10 @@ class PublicPagesController < ApplicationController
       not_movies = ["TV Series","TV Episode", "Video","Video Game", "Short"]
       movie_info = search.movies.select{|movie| not_movies.include?(movie.title.split("(")[-1][0..-2]) == false}[0]
       Movie.create(search: text.downcase, imdb_id: movie_info.id, title: movie_info.title, main_char: movie_info.cast_characters[0].gsub(" (voice)",""), main_cast: movie_info.cast_members[0], second_char: movie_info.cast_characters[1].gsub(" (voice)",""), second_cast: movie_info.cast_members[1], poster: movie_info.poster)
+      agent = Mechanize.new
+      agent.get(@movie.poster).save_as "public/images/#{@id}.jpg"
       lookup = Movie.where(search: text.downcase).first
+
     end
     lookup
   end
